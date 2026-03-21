@@ -1,17 +1,28 @@
 package com.ESCOLA.SistemaDeEscola.Entidades;
  import java.io.Serializable;
-public class Usuario implements Serializable {
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="tb_Usuario")
+ public class Usuario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String Nome;
-	private int Matricula;
+	private String Matricula;
 	
 	public Usuario() {
 	
 	}
 
-	public Usuario(Long id, String Nome, int Matricula) {
+	public Usuario(Long id, String Nome, String Matricula) {
 		super();
 		this.id = id;
 		this.Nome = Nome;
@@ -30,9 +41,8 @@ public class Usuario implements Serializable {
 		return id;
 	}
 
-	public int getMatricula() {
+	public String getMatricula() {
 		return Matricula;
 	}
 	
-
 }

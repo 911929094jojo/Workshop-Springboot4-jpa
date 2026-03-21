@@ -14,7 +14,7 @@ import com.ESCOLA.SistemaDeEscola.Entidades.Usuario;
 public class UsuarioRecurso {
 	@GetMapping
 	public ResponseEntity<Usuario> findAll(){
-		Usuario U1= new Usuario(1L,"jonathan",11223);
+		Usuario U1= new Usuario(1L,"jonathan","11223");
 		return ResponseEntity.ok().body(U1);
 	}
 
