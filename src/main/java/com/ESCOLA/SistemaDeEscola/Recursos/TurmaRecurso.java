@@ -5,14 +5,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ESCOLA.SistemaDeEscola.Entidades.EEMaria;
+import com.ESCOLA.SistemaDeEscola.Entidades.Turma;
 
 @RestController
-@RequestMapping(value ="/EEMatia")
-public class EEMariaRecurso {
-@GetMapping
-public ResponseEntity<EEMaria> findAll(){
-EEMaria Maria = new EEMaria(2L,"MARIA");
-return ResponseEntity.ok().body(Maria);
+@RequestMapping(value ="/Turma")
+
+public class TurmaRecurso {
+
+	@GetMapping
+public ResponseEntity<Turma> findAll(){
+Turma Turma = new Turma(2L,"3B","Noturno");
+return ResponseEntity.ok().body(Turma);
 }
 }
