@@ -1,5 +1,7 @@
 package com.ESCOLA.SistemaDeEscola.Entidades;
  import java.io.Serializable;
+import java.util.Objects;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,8 +21,25 @@ import jakarta.persistence.Table;
 	private String Nome;
 	private String Matricula;
 	@ManyToOne
-	@JoinColumn(name = "Turma_ID")
+	@JoinColumn
 	private Turma turma;
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Usuario other = (Usuario) obj;
+		return Objects.equals(id, other.id);
+	}
 
 	public Usuario() {
 	
@@ -52,5 +71,10 @@ import jakarta.persistence.Table;
 	public Turma getTurma() {
 		return turma;
 	}
-	
+
+	public void setTurma(Turma turma2) {
+this.turma=turma2;		
+	}
+
+
 }

@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,33 +23,13 @@ import jakarta.persistence.Table;
 	
 private Long id;
 private String serie;
-public List<Usuario> getAlunos() {
-return alunos;}
-
-public void setAlunos(List<Usuario> alunos) {
-this.alunos = alunos;}
-	
 private String periodo;
-
-@OneToMany(mappedBy ="turma")
-private List<Usuario>alunos;	
-
-@Override
-public int hashCode() {
-return Objects.hash(id);}
-	
-@Override
-public boolean equals(Object obj) {
-	if (this == obj)
-		return true;
-	if (obj == null)
-		return false;
-	if (getClass() != obj.getClass())
-		return false;
-	Turma other = (Turma) obj;
-		return Objects.equals(id, other.id);}
+@JsonIgnore
+@OneToMany(mappedBy="turma")
+private List<Usuario>Usuarios = new ArrayList<>(); 
 
 public Turma() {}
+
 public Turma (Long id,String serie,String periodo) {
 	this.id=id;
 	this.serie=serie;
@@ -61,6 +43,13 @@ public String getPeriodo() {
 }
 public Long getId() {
 	return id;
+}
+public List<Usuario> getUsuarios() {
+	return Usuarios;
+}
+public void AdicionarUsuario(Usuario usuario) {
+	this.Usuarios.add(usuario);
+	usuario.setTurma(this);
 }
 
 }
