@@ -2,6 +2,8 @@ package com.ESCOLA.SistemaDeEscola.Entidades;
  import java.io.Serializable;
 import java.util.Objects;
 
+import com.ESCOLA.SistemaDeEscola.Enum.PerfilDoUsuario;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,6 +25,7 @@ import jakarta.persistence.Table;
 	@ManyToOne
 	@JoinColumn
 	private Turma turma;
+	private Integer perfildousuario;
 	
 	@Override
 	public int hashCode() {
@@ -41,15 +44,24 @@ import jakarta.persistence.Table;
 		return Objects.equals(id, other.id);
 	}
 
+	public PerfilDoUsuario getPerfildousuaio() {
+		return PerfilDoUsuario.valor(perfildousuario);
+	}
+
+	public void setPerfildousuaio(PerfilDoUsuario perfildousuaio) {
+		this.perfildousuario = perfildousuaio.getNum();
+	}
+
 	public Usuario() {
 	
 	}
 
-	public Usuario(Long id, String Nome, String Matricula) {
+	public Usuario(Long id, String Nome, String Matricula,PerfilDoUsuario perfildousuario) {
 		super();
 		this.id = id;
 		this.Nome = Nome;
 		this.Matricula = Matricula;
+		setPerfildousuaio(perfildousuario);
 	}
 
 	public String getNome() {
