@@ -30,4 +30,13 @@ public Usuario Inserir(Usuario obj) {
 	public void Deletar(Long id) {
 		repositorio.deleteById(id);
 	}
+public Usuario Atualizar(Long id, Usuario obj) {
+	Usuario entity =repositorio.getReferenceById(id);
+DadosDeAtualização(entity,obj);
+return repositorio.save(entity);
+}
+private void DadosDeAtualização(Usuario entity, Usuario obj) {
+entity.setNome(obj.getNome());	
+
+}
 }
