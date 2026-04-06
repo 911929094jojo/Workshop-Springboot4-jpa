@@ -2,7 +2,10 @@ package com.ESCOLA.SistemaDeEscola.Entidades;
  import java.io.Serializable;
 import java.util.Objects;
 
+import org.apache.catalina.startup.ClassLoaderFactory.Repository;
+
 import com.ESCOLA.SistemaDeEscola.Enum.PerfilDoUsuario;
+import com.ESCOLA.SistemaDeEscola.Repositorios.UsuarioRepositorio;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,7 +26,7 @@ import jakarta.persistence.Table;
 	private String Nome;
 	private String Matricula;
 	@ManyToOne
-	@JoinColumn
+	@JoinColumn 
 	private Turma turma;
 	private Integer perfildousuario;
 	
@@ -44,12 +47,12 @@ import jakarta.persistence.Table;
 		return Objects.equals(id, other.id);
 	}
 
-	public PerfilDoUsuario getPerfildousuaio() {
+	public PerfilDoUsuario getPerfildousuario() {
 		return PerfilDoUsuario.valor(perfildousuario);
 	}
 
-	public void setPerfildousuaio(PerfilDoUsuario perfildousuaio) {
-		this.perfildousuario = perfildousuaio.getNum();
+	public void setPerfildousuario(PerfilDoUsuario perfildousuario) {
+		this.perfildousuario = perfildousuario.getNum();
 	}
 
 	public Usuario() {
@@ -61,7 +64,7 @@ import jakarta.persistence.Table;
 		this.id = id;
 		this.Nome = Nome;
 		this.Matricula = Matricula;
-		setPerfildousuaio(perfildousuario);
+		setPerfildousuario(perfildousuario);
 	}
 
 	public String getNome() {
