@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.ESCOLA.SistemaDeEscola.Entidades.Usuario;
 import com.ESCOLA.SistemaDeEscola.Repositorios.UsuarioRepositorio;
+import com.ESCOLA.SistemaDeEscola.Serviços.Exceções.RecursoNãoEcontradoExceção;
 @Service
 public class ServiçosDoUsuario {
 	@Autowired
@@ -22,7 +23,7 @@ public List<Usuario> findAll(){
 }
 public Usuario findById(Long id) {
 	Optional<Usuario> obj = repositorio.findById(id);
-			 return obj.get();
+			 return obj.orElseThrow(() -> new RecursoNãoEcontradoExceção(id));
 }
 public Usuario Inserir(Usuario obj) {
 	 return repositorio.save(obj);	
