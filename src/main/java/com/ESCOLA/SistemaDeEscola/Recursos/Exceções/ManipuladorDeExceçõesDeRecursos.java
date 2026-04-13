@@ -14,11 +14,13 @@ import jakarta.servlet.http.HttpServletRequest;
 @ControllerAdvice
 public class ManipuladorDeExceçõesDeRecursos {
 	@ExceptionHandler(RecursoNãoEcontradoExceção.class)
-	public ResponseEntity<ErroPadrão> RecursoNaoEncontrado(RecursoNãoEcontradoExceção e,HttpServletRequest requisição){
-		String error = "Recurso nao encontrado EDITADO";
-		HttpStatus  status = HttpStatus.NOT_FOUND;
-	 ErroPadrão err = new ErroPadrão(Instant.now(), status.value(), error, e.getMessage(),requisição.getRequestURI());
-	return ResponseEntity.status(status).body(err);
+	public ResponseEntity<ErroPadrão> RecursoNaoEncontrado(RecursoNãoEcontradoExceção e,
+			HttpServletRequest requisição) {
+		String Erro = "Recurso nao encontrado EDITADO";
+		HttpStatus status = HttpStatus.NOT_FOUND;
+		ErroPadrão err = new ErroPadrão(Instant.now(), status.value(), Erro, e.getMessage(),
+				requisição.getRequestURI());
+		return ResponseEntity.status(status).body(err);
 	}
 
 }

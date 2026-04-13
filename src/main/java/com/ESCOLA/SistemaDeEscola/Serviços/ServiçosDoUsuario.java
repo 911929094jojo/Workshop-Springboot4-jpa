@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.ESCOLA.SistemaDeEscola.Entidades.Usuario;
 import com.ESCOLA.SistemaDeEscola.Repositorios.UsuarioRepositorio;
 import com.ESCOLA.SistemaDeEscola.Serviços.Exceções.RecursoNãoEcontradoExceção;
+
+import jakarta.persistence.EntityNotFoundException;
 @Service
 public class ServiçosDoUsuario {
 	@Autowired
@@ -25,17 +27,24 @@ public Usuario findById(Long id) {
 	Optional<Usuario> obj = repositorio.findById(id);
 			 return obj.orElseThrow(() -> new RecursoNãoEcontradoExceção(id));
 }
-public Usuario Inserir(Usuario obj) {
+public Usuario Inserir(Usuario obj)
+
+
+	{
 	 return repositorio.save(obj);	
 	}
 	public void Deletar(Long id) {
 		repositorio.deleteById(id);
 	}
 public Usuario Atualizar(Long id, Usuario obj) {
-	Usuario entity =repositorio.getReferenceById(id);
+	
+	try {Usuario entity =repositorio.getReferenceById(id);
 DadosDeAtualização(entity,obj);
 return repositorio.save(entity);
+}catch (EntityNotFoundException e){
+	throw new RecursoNãoEcontradoExceção(id);
 }
+	}
 private void DadosDeAtualização(Usuario entity, Usuario obj) {
 entity.setNome(obj.getNome());	
 

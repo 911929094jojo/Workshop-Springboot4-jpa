@@ -7,6 +7,6 @@ public class RecursoNãoEcontradoExceção extends RuntimeException{
 	 */
 	private static final long serialVersionUID = 1L;
  public RecursoNãoEcontradoExceção(Object id) {
-	 super("EDITADO Recursno não encotrado:"+ id);
+	 super("EDITADO Recurso não encotrado:"+ id);
  }
 }

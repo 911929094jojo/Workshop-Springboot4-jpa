@@ -10,8 +10,9 @@ public class ErroPadrão implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private Instant timestamp;
 	private Integer status;
-private String error;
+private String Erro;
 private String message;
+private String path;
 	public String getMessage() {
 	return message;
 }
@@ -20,7 +21,7 @@ public void setMessage(String message) {
 	this.message = message;
 }
 
-	private String path;
+	
 	
 	public ErroPadrão() {
 		
@@ -43,11 +44,11 @@ public void setMessage(String message) {
 	}
 
 	public String getError() {
-		return error;
+		return Erro;
 	}
 
-	public void setError(String error) {
-		this.error = error;
+	public void setError(String Error) {
+		this.Erro = Error;
 	}
 
 	public String getPath() {
@@ -58,11 +59,13 @@ public void setMessage(String message) {
 		this.path = path;
 	}
 
-	public ErroPadrão(Instant timestamp, Integer status, String error, String path, String message) {
+	public ErroPadrão(Instant timestamp, Integer status, String Error,String message ,String path) {
 		super();
 		this.timestamp = timestamp;
 		this.status = status;
-		this.error = error;
+		this.Erro = Error;
+		this.message = message;
 		this.path = path;
-	}
+		
+		}
 }
